@@ -3,8 +3,16 @@ import java.util.LinkedList;
 import javax.swing.JFileChooser;
 /**
 *
-* @author AnjolaOlarinde
+* @author Anjola Olarinde
 */
+/**
+ * This class gives the user an interface to work with the Listserv classes.
+ * 
+ * @author <pre>Anjola Olarinde, C/4C, AFROTC</pre>
+ * <pre>Deputy Technology Officer, Detachment 330</pre>
+ * <pre>April 2017</pre>
+ * 
+ */
 public class ListservGUI extends javax.swing.JFrame {
 
    /**
