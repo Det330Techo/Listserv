@@ -24,6 +24,9 @@ import application.ListservFillWorker.Action;
  * <pre>February 2017</pre>
  * 
  */
+
+// TODO: if you feel adept at concurrency, consider using an ExecutorService with
+// this program instead of threads. This should significantly speed up the program.
 public class ListservFill{
 	private static final int NUMTHREADS = Runtime.getRuntime().availableProcessors();
 	private static ListservFillWorker[] workers;
@@ -52,7 +55,7 @@ public class ListservFill{
 			try {
 				workers[i].join();
 			} catch (InterruptedException e) {
-				System.err.println("Something happened with the threads.");
+				print("Consider sending all of the requests again.\nError: " + e);
 			}
 	}
 	
@@ -76,7 +79,7 @@ public class ListservFill{
 			try {
 				workers[i].join();
 			} catch (InterruptedException e) {
-				System.err.println("Something happened with the threads.");
+				print("Consider sending all of the requests again.\nError: " + e);
 			}
 	}
 	
@@ -144,63 +147,16 @@ public class ListservFill{
 			// Sends data
 			InputStream input = connect.getInputStream();
 		} catch (MalformedURLException e) {
-			print("There was an error with the URL.");
+			print("There was an error with the URL.  Make sure the Listserv URL hasn't changed.  "
+					+ "If it has, you will need to change it in the code.");
 			return false;
 		} catch (IOException e) {
-			print("There was an error with opening the connection.");
+			print("There was an error with opening the connection.  Check your internet connection.");
 			return false;
 		}
 		
 		return true;
 	}
-		
-	
-	/**
-	 * Opens the given file and extracts emails that are separated by anything but
-	 * alphanumeric characters, adds the emails to a LinkedList, 
-	 * then returns the List. 
-	 * 
-	 * @param file
-	 * @return LinkedList of emails
-	 */
-	/*private static LinkedList<String> getEmails(String file) {
-		LinkedList<String> emails = new LinkedList<String>();
-        BufferedReader br = null;
-        String email, line = "";
-        
-        // Regular Expression containing anything but A-Z, a-z, 0-9, @, or .
-        String cvsSplitBy = "[^A-Za-z0-9@.]";
-
-        try {
-        	// Opens file
-            br = new BufferedReader(new FileReader(file));
-            
-            //Reads lines
-            while ((line = br.readLine()) != null) {
-            	
-                // use comma, new line, and space as separator
-            	email = line.split(cvsSplitBy)[0];
-            	emails.add(email);
-            }
-
-        } catch (FileNotFoundException e) {
-        	print("There was a problem reading the file");
-        } catch (IOException e) {
-            print("There was a problem reading an email address.");
-        } finally {
-            if (br != null) {
-            	
-            	// Closes the file
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    print("There was an error closing the file.");
-                }
-            }
-        }
-        
-        return emails;
-	}*/
 	
 	
 	/**
@@ -228,21 +184,6 @@ public class ListservFill{
              
         return emails;
 	}
-	
-	
-	/**
-	 * DO NOT USE THIS IN NORMAL OPERATION. For Testing Only.
-	 * 
-	 * Parses the emails from the file and prints to standard out.
-	 * 
-	 * @param file
-	 */
-	/*private static void readEmails(String file){
-		LinkedList<String> emails = getEmails(file);
-		for (String email: emails){
-			System.out.println(email);
-		}
-	}*/
 	
 	
 	/**
