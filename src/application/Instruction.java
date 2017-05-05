@@ -36,7 +36,11 @@ public class Instruction extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Copy the emails into the text area titled \n\"Emails\" like so:\n\nemail@email.com\nemail2@email2.com\nemail3@email3.com\n\nTo join/remove ALL of the emails in the text \narea to the ListServ, click the corresponding \nradio button, then press send.\n\nThe email should receive a confirmation email from \nLISTSERV@LISTSERV.UMD.EDU\n\nEdits to the GUI should be made in NETBEANS\n");
+        /**
+         *  Edit the following text to edit what appears in the instructions menu.
+         */
+        jTextArea1.setText("Copy the emails into the text area titled \n\"Emails\" like so:\n\nemail@email.com\nemail2@email2.com\nemail3@email3.com\n\nYou may have comma's separating the emails,\nor just a space separating them.\n\nTo join/remove ALL of the emails in the text \narea to the ListServ, click the corresponding button, then press send.\n\nThe email should receive a confirmation email from \nLISTSERV@LISTSERV.UMD.EDU\n\nIf you would like to edit this GUI, use NETBEANS.\nIf you would like to edit the actualy code, you can use eclipse.\n");
+        
         jScrollPane1.setViewportView(jTextArea1);
         jLabel1.setText("Instructions");
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
