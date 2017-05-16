@@ -56,7 +56,10 @@ public class ListservFill{
 				workers[i].join();
 			} catch (InterruptedException e) {
 				print("Consider sending all of the requests again.\nError: " + e);
+				return;
 			}
+		
+		print("Completed!");
 	}
 	
 	
@@ -80,7 +83,10 @@ public class ListservFill{
 				workers[i].join();
 			} catch (InterruptedException e) {
 				print("Consider sending all of the requests again.\nError: " + e);
+				return;
 			}
+		
+		print("Completed!");
 	}
 	
 	
@@ -193,6 +199,6 @@ public class ListservFill{
 	 * @param line 
 	 */
 	private static void print(String line){
-		System.out.println(line);
+		ListservGUI.sendMessage(line);
 	}
 }
